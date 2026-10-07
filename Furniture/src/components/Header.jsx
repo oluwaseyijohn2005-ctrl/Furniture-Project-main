@@ -4,13 +4,16 @@ export default function Header({ setPage, setCategory, cartCount, searchQuery, s
   const [menuOpen, setMenuOpen] = useState(false);
   const [shopDropdown, setShopDropdown] = useState(false); // NEW
 
-  const handleNav = (page, cat = null) => {
-    setPage(page);
-    if(cat) setCategory(cat);
-    setMenuOpen(false);
-    setShopDropdown(false);
+const handleNav = (page, cat = null) => {
+  setPage(page);
+  if(cat) {
+    setCategory(cat);
+    setSearchQuery("");
   }
-
+  setMenuOpen(false);
+  setShopDropdown(false);
+  window.scrollTo({ top: 0, behavior: "smooth" });git
+}
   return (
     <header className="header">
       <h1 className="logo" onClick={() => handleNav("home")}>FurniLux</h1>

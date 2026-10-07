@@ -28,14 +28,14 @@ export default function App() {
   useEffect(() => {
     setTimeout(() => {
       setProducts([
-        {id: 1, name: "Velvet Lounge Sofa", price: 450000, category: "sofa", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600"},
-        {id: 2, name: "King Oak Bed", price: 600000, category: "bed", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"},
+        {id: 1, name: "Velvet Lounge Sofa", price: 450000, category: "living", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600"},
+        {id: 2, name: "King Oak Bed", price: 600000, category: "bedroom", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600"},
         {id: 3, name: "Marble Dining Table", price: 350000, category: "dining", image: "https://images.unsplash.com/photo-1551298370-9d3d53740c72?w=600"},
-        {id: 4, name: "Accent Armchair", price: 120000, category: "chair", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600"},
-        {id: 5, name: "Wooden Bookshelf", price: 180000, category: "storage", image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600"},
-        {id: 6, name: "Ceramic Vase Set", price: 45000, category: "decor", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"},
-        {id: 7, name: "Sectional Sofa", price: 750000, category: "sofa", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600"},
-        {id: 8, name: "Dining Chair Set", price: 200000, category: "chair", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600"},
+        {id: 4, name: "Accent Armchair", price: 120000, category: "living", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600"},
+        {id: 5, name: "Wooden Bookshelf", price: 180000, category: "living", image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600"},
+        {id: 6, name: "Ceramic Vase Set", price: 45000, category: "living", image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600"},
+        {id: 7, name: "Sectional Sofa", price: 750000, category: "living", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600"},
+        {id: 8, name: "Dining Chair Set", price: 200000, category: "dining", image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=600"},
       ]);
       setLoading(false);
     }, 800);
@@ -91,7 +91,7 @@ export default function App() {
             />
           }
           {page === "about" && <About setPage={setPage} />}
-          {page === "care" && <CareGuide setPage={setPage} />}  {/* FIXED: only 1 now */}
+          {page === "care" && <CareGuide setPage={setPage} />}
           {page === "contact" && <Contact />}
         </>
       )}
@@ -125,7 +125,8 @@ export default function App() {
         />
       }
 
-      <Footer setPage={setPage} />
+      {/* FIXED: added setCategory */}
+      <Footer setPage={setPage} setCategory={setCategory} />
     </div>
   )
 }

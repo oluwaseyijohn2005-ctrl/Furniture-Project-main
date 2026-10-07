@@ -1,11 +1,9 @@
 export default function Footer({ setPage, setCategory }) {
-
   const handleFooterLink = (page, cat = null) => {
     setPage(page);
     if(cat) setCategory(cat);
-    window.scrollTo(0, 0); // scroll to top
+    window.scrollTo(0, 0);
   }
-
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -13,7 +11,6 @@ export default function Footer({ setPage, setCategory }) {
           <h3>FurniLux</h3>
           <p>Premium furniture for modern Nigerian homes.</p>
         </div>
-
         <div className="footer-col">
           <h4>Shop</h4>
           <button onClick={() => handleFooterLink("products", "all")}>All Products</button>
@@ -21,7 +18,6 @@ export default function Footer({ setPage, setCategory }) {
           <button onClick={() => handleFooterLink("products", "bedroom")}>Bedroom</button>
           <button onClick={() => handleFooterLink("products", "dining")}>Dining</button>
         </div>
-
         <div className="footer-col">
           <h4>Company</h4>
           <button onClick={() => handleFooterLink("about")}>About</button>

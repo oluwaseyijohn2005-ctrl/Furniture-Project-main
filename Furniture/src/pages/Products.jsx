@@ -1,12 +1,20 @@
 export default function Products({ products = [], category = "all", searchQuery = "", setSelectedProduct, addToCart }) {
   
   const filteredProducts = products.filter(product => {
-    const matchesCategory = category === "all" || product.category === category;
-    
-    // UPDATED: search by both name AND category
-    const matchesSearch = 
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchQuery.toLowerCase());
+    const cat = category.toLowerCase();
+    const prodCat = (product.category || "").toLowerCase();
+
+    const matchesCategory = 
+      cat === "all" || 
+      cat === "all products" || 
+      prodCat === cat ||
+      prodCat.includes(cat) || 
+      cat.includes(prodCat);
+
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = q === "" || 
+      product.name.toLowerCase().includes(q) ||
+      prodCat.includes(q);
     
     return matchesCategory && matchesSearch;
   });
@@ -14,10 +22,9 @@ export default function Products({ products = [], category = "all", searchQuery 
   return (
     <div className="featured-section" style={{padding: '80px 40px', minHeight: '60vh'}}>
       <h2 className="section-title">
-        {category === "all" ? "All Products" : category.charAt(0).toUpperCase() + category.slice(1)}
+        {category === "all" || category === "all products" ? "All Products" : category.charAt(0).toUpperCase() + category.slice(1)}
       </h2>
 
-      {/* Show what user searched for */}
       {searchQuery && (
         <p style={{textAlign: 'center', marginBottom: '20px', color: '#666'}}>
           Showing results for: <strong>"{searchQuery}"</strong>
@@ -27,7 +34,9 @@ export default function Products({ products = [], category = "all", searchQuery 
       {products.length === 0 ? (
         <p style={{textAlign: 'center', padding: '60px'}}>Loading products...</p>
       ) : filteredProducts.length === 0 ? (
-        <p style={{textAlign: 'center', padding: '60px'}}>No products found for "{searchQuery}"</p>
+        <p style={{textAlign: 'center', padding: '60px'}}>
+          No products found in <strong>{category}</strong> {searchQuery && `for "${searchQuery}"`}
+        </p>
       ) : (
         <div className="product-grid">
           {filteredProducts.map(product => (

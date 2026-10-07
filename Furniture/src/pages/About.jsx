@@ -12,9 +12,7 @@ export default function About({ setPage }) {
       <section className="about-section">
         <h2 className="section-title">Our Story</h2>
         <p>
-          FurniLux was born in Ilorin with one simple mission: bring world-class, 
-          modern furniture to Nigerian homes without the import hassle. We believe 
-          your home should reflect who you are - elegant, warm, and uniquely yours.
+         We are FurniLux, a brand with a big mission: make luxury furniture accessible in Nigeria.We know the struggle — you want modern, durable furniture but importation is expensive. So we fixed it. We source the best materials and work with trusted craftsmen to deliver elegant, long-lasting pieces directly to your doorstep and beyond.
         </p>
         <p>
           Every piece in our collection is carefully selected for quality, comfort, 
